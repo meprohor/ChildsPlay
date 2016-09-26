@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// Player controller and behavior
@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spriterendererComponent;
 
     // Bool variable to check if the object is standing on the ground and can jump
-    private bool canJump = true;
+    public bool canJump = true;
 
     // Variables for unlocking abilities
     public bool unlockJump;
@@ -31,10 +31,9 @@ public class PlayerScript : MonoBehaviour
     {
         foreach (ContactPoint2D contact in other.contacts)
         {
-            if (contact.point.y < transform.position.y)
+            if (contact.point.y < transform.position.y){
                 canJump = true;
-            else
-                canJump = false;
+            }
         }
     }
 
@@ -74,7 +73,7 @@ public class PlayerScript : MonoBehaviour
         {
             spriterendererComponent.flipX = false;
         }
-        Debug.Log(unlockJump.ToString());
+
         // Set the y component of the movement vector
         if (unlockJump && Input.GetButton("Jump") && canJump)
         {
