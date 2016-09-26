@@ -53,8 +53,8 @@ Rigidbody2D:
   m_UseAutoMass: 1
   m_Mass: 2.8576083
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 25
+  m_AngularDrag: 50
+  m_GravityScale: 15
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -85,7 +85,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518f694e33589ae4b92bea3d0fe227ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 25, y: 50}
+  speed: {x: 25, y: 35}
+  unlockJump: 0
+  unlockLeft: 0
+  unlockKick: 0
 --- !u!212 &212000013973191584
 SpriteRenderer:
   m_ObjectHideFlags: 1

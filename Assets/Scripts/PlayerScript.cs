@@ -20,11 +20,22 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spriterendererComponent;
 
     // Bool variable to check if the object is standing on the ground and can jump
-    private bool canJump;
+    private bool canJump = true;
+
+    // Variables for unlocking abilities
+    public bool unlockJump;
+    public bool unlockLeft;
+    public bool unlockKick;
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        canJump = true;
+        foreach (ContactPoint2D contact in other.contacts)
+        {
+            if (contact.point.y < transform.position.y)
+                canJump = true;
+            else
+                canJump = false;
+        }
     }
 
     void OnCollisionExit2D(Collision2D other)
@@ -43,6 +54,11 @@ public class PlayerScript : MonoBehaviour
         // Retrieve axis information
         float inputX = Input.GetAxis("Horizontal");
         
+        if(!unlockLeft && inputX < 0)
+        {
+            inputX *= -1;
+        }
+
         // Set the X component for the movement vector
         movement = new Vector2(
           speed.x * inputX,
@@ -58,9 +74,9 @@ public class PlayerScript : MonoBehaviour
         {
             spriterendererComponent.flipX = false;
         }
-
+        Debug.Log(unlockJump.ToString());
         // Set the y component of the movement vector
-        if (Input.GetButton("Jump") && canJump)
+        if (unlockJump && Input.GetButton("Jump") && canJump)
         {
             movement.y = speed.y;
         }
