@@ -17,10 +17,7 @@ public class CameraScript : MonoBehaviour {
 		cameraPosition = transform.position;
 		objectPosition = rigidBody.position;
 		float x = followedObject.transform.position.x;
-
-		Debug.Log("camera: " + cameraPosition.x);
-		Debug.Log("x: " + x);
-		Debug.Log("object: " + objectPosition.x);
+		
 		if(Mathf.Abs(cameraPosition.x - objectPosition.x) > 2.5f){
 			if(cameraPosition.x > objectPosition.x)
 				cameraPosition.x-=0.25f;
