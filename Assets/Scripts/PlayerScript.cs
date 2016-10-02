@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spriterendererComponent;
 
     // Bool variable to check if the object is standing on the ground and can jump
+    [HideInInspector]
     public bool canJump = true;
 
     // Variables for unlocking abilities
@@ -66,13 +67,14 @@ public class PlayerScript : MonoBehaviour
         // Check where our hero is facing
         if(inputX > 0)
         {
-            spriterendererComponent.flipX = true;
+            spriterendererComponent.flipX = false;
         }
 
         if (inputX < 0)
         {
-            spriterendererComponent.flipX = false;
+            spriterendererComponent.flipX = true;
         }
+
 
         // Set the y component of the movement vector
         if (unlockJump && Input.GetButton("Jump") && canJump)
@@ -81,9 +83,22 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+
     void FixedUpdate()
     {
         // Move the game object
         rigidbodyComponent.velocity = movement;
+
+        float angle = ClampAngle(movement.x+rigidbodyComponent.rotation, -25, 25);
+        rigidbodyComponent.MoveRotation(angle);
     }
+
+    public static float ClampAngle (float angle, float min, float max)
+ {
+     if (angle < -360F)
+         angle += 360F;
+     if (angle > 360F)
+         angle -= 360F;
+     return Mathf.Clamp (angle, min, max);
+ }
 }
