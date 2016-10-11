@@ -46,6 +46,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rigidbodyComponent = GetComponent<Rigidbody2D>();
+
         spriterendererComponent = GetComponent<SpriteRenderer>();
     }
 
@@ -89,7 +90,7 @@ public class PlayerScript : MonoBehaviour
         // Move the game object
         rigidbodyComponent.velocity = movement;
 
-        float angle = ClampAngle(movement.x+rigidbodyComponent.rotation, -25, 25);
+        float angle = ClampAngle(movement.x, -25, 25);
         rigidbodyComponent.MoveRotation(angle);
     }
 
