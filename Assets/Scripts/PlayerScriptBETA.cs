@@ -63,6 +63,7 @@ public class PlayerScriptBETA : MonoBehaviour
         // Get their rigidBodies
         rigidbodyWheel = wheel.GetComponent<Rigidbody2D>();
         rigidbodyBody = body.GetComponent<Rigidbody2D>();
+        rigidbodyBody.centerOfMass = new Vector3(0.5f, 0, 0);
 
         // Get their spriterenderer's
         spriteRendererWheel = wheel.GetComponent<SpriteRenderer>();
@@ -84,7 +85,7 @@ public class PlayerScriptBETA : MonoBehaviour
         // Set the X component for the movement vector
         movement = new Vector2(
           speed.x * inputX,
-          rigidbodyWheel.velocity.y);
+          rigidbodyComponent.velocity.y);
 
         // Check where our hero is facing
         if(inputX > 0)
@@ -120,6 +121,10 @@ public class PlayerScriptBETA : MonoBehaviour
 
         // Rotate the wheel and player model
         rigidbodyBody.MoveRotation(movement.x);
+
         rigidbodyWheel.MoveRotation(movement.x+rigidbodyWheel.rotation);
     }
+
+
+
 }
