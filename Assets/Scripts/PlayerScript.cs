@@ -21,7 +21,8 @@ public class PlayerScript : MonoBehaviour
 
     // Bool variable to check if the object is standing on the ground and can jump
     [HideInInspector]
-    public bool canJump = true;
+    public bool isGrounded = true;
+    private GameObject groundedOn = null;
 
     // Variables for unlocking abilities
     public bool unlockJump;
@@ -30,17 +31,24 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        foreach (ContactPoint2D contact in other.contacts)
-        {
-            if (contact.point.y < transform.position.y){
-                canJump = true;
+        if(other.gameObject.CompareTag("Platform")){
+            foreach (ContactPoint2D contact in other.contacts)
+            {
+                if (contact.normal.y > 0){
+                    isGrounded = true;
+                    groundedOn = other.gameObject;
+                    break;
+                }
             }
         }
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
-        canJump = false;
+        if(other.gameObject == groundedOn){
+            isGrounded = false;
+            groundedOn = null;
+        }
     }
 
     void Start()
@@ -78,7 +86,7 @@ public class PlayerScript : MonoBehaviour
 
 
         // Set the y component of the movement vector
-        if (unlockJump && Input.GetButton("Jump") && canJump)
+        if (unlockJump && Input.GetButton("Jump") && isGrounded)
         {
             movement.y = speed.y;
         }

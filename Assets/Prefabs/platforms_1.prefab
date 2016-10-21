@@ -23,7 +23,7 @@ GameObject:
   - 68: {fileID: 68000011050734550}
   m_Layer: 0
   m_Name: platforms_1
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -44,7 +44,7 @@ public class CameraScript : MonoBehaviour {
 		}
 		transform.position = cameraPosition;*/
 
-		if(followedObject.GetComponent<PlayerScript>().canJump && Mathf.Abs(cameraPosition.y - objectPosition.y) > 0.25f){
+		if(followedObject.GetComponent<PlayerScript>().isGrounded && Mathf.Abs(cameraPosition.y - objectPosition.y) > 0.25f){
 			Vector3 directionalVector = (objectPosition - cameraPosition).normalized * 50;
 			desiredVelocity.y = directionalVector.y;
 		}else{
