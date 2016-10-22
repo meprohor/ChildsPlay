@@ -18,41 +18,33 @@ public class CameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// Get camera position and followed object position
 		cameraPosition = transform.position;
 		objectPosition = rigidBody.position;
 		
-		/*if(Mathf.Abs(cameraPosition.x - objectPosition.x) > 2.5f){
-			if(cameraPosition.x > objectPosition.x)
-				cameraPosition.x-=0.25f;
-			else
-				cameraPosition.x+=0.25f;
-		}*/
-		
+		// Check if the object moved beyond the specified offset
 		if(Mathf.Abs(cameraPosition.x - objectPosition.x) > 2.0f){
+			// Set camera velocity vector so that it would followed the object horizontally
 			Vector3 directionalVector = (objectPosition - cameraPosition).normalized * 50;
 			desiredVelocity.x = directionalVector.x;
-
 		}else{
+			// Otherwise set the velociy to zero
 			desiredVelocity.x = 0;
 		}
 
-		/*if(followedObject.GetComponent<PlayerScript>().canJump && Mathf.Abs(cameraPosition.y - objectPosition.y) > 0.25f){
-			if(cameraPosition.y > objectPosition.y)
-				cameraPosition.y-=0.25f;
-			else
-				cameraPosition.y+=0.25f;
-		}
-		transform.position = cameraPosition;*/
-
-		if(followedObject.GetComponent<PlayerScript>().isGrounded && Mathf.Abs(cameraPosition.y - objectPosition.y) > 0.25f){
+		// Move the camera vertically only if an object jumped on a higher platform or exceeded the specified vertical speed limit
+		if((followedObject.GetComponent<PlayerScript>().isGrounded && Mathf.Abs(cameraPosition.y - objectPosition.y) > 0.15f) || rigidBody.velocity.y > 35){
+			// Set camera velocity vector so that it would followed the object vertically
 			Vector3 directionalVector = (objectPosition - cameraPosition).normalized * 50;
 			desiredVelocity.y = directionalVector.y;
 		}else{
+			// Otherwise set it to zero
 			desiredVelocity.y = 0;
 		}
 	}
 
 	void FixedUpdate () {
-     camRigidBody.velocity = desiredVelocity;
+		// Change camera's rigid body velocity
+     	camRigidBody.velocity = desiredVelocity;
  }
 }

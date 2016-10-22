@@ -2,16 +2,16 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(PowerUpScript))]
-public class PowerUpEditor : Editor {
-        string[] _choices = new[] { "Jump", "Turn", "Push", "Double Jump" };
+[CustomEditor(typeof(SteamExhaustScript))]
+public class SteamExhaustEditor : Editor {
+        string[] _choices = new[] { "High Jump", "Create Platform" };
 
 
         public override void OnInspectorGUI()
         {
             // Draw the default inspector
             DrawDefaultInspector();
-            PowerUpScript myTarget = (PowerUpScript)target;
+            SteamExhaustScript myTarget = (SteamExhaustScript)target;
             int _choiceIndex = myTarget.choiceIndex;
             _choiceIndex = EditorGUILayout.Popup(_choiceIndex, _choices);
 

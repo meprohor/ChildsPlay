@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spriterendererComponent;
 
     // Bool variable to check if the object is standing on the ground and can jump
-    [HideInInspector]
+   // [HideInInspector]
     public bool isGrounded = true;
     private GameObject groundedOn = null;
 

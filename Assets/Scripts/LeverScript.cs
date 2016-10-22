@@ -8,8 +8,7 @@ public class LeverScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other)
     {
         GetComponent<SpriteRenderer>().flipX = false;
-        if(affected.CompareTag("Door"))
-        	affected.SendMessage("Open");
+        affected.SendMessage("Activate");
         Destroy(GetComponent<BoxCollider2D>());
     }
 }
