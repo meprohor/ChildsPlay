@@ -10,6 +10,12 @@ public class PlayerScript : MonoBehaviour
     /// </summary>
     public Vector2 speed = new Vector2(50, 50);
 
+    // Variables for unlocking abilities
+    public bool unlockJump;
+    public bool unlockTurn;
+    public bool unlockPush;
+    public bool unlockDoubleJump;
+
     // Movement Vector
     private Vector2 movement;
 
@@ -24,10 +30,12 @@ public class PlayerScript : MonoBehaviour
     public bool isGrounded = true;
     private GameObject groundedOn = null;
 
-    // Variables for unlocking abilities
-    public bool unlockJump;
-    public bool unlockLeft;
-    public bool unlockKick;
+    // false - t-roller facing right
+    // true - t-roller facing left
+    private bool turn = false;
+
+    private float timeBetweenTurns = 0.3333f;
+	private float timestamp;
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -61,28 +69,28 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         // Retrieve axis information
-        float inputX = Input.GetAxis("Horizontal");
+        float inputX = 0;
+        if(Input.GetButton("Vertical"))
+        	 inputX = 1;
         
-        if(!unlockLeft && inputX < 0)
-        {
+       	if(Time.time >= timestamp && Input.GetButton("Turn")){
+       		turn = !turn;
+       		timestamp = Time.time + timeBetweenTurns;
+       	}
+
+        if(turn){
             inputX *= -1;
-        }
+            spriterendererComponent.flipX = true;
+        } 
+     	else{
+     		spriterendererComponent.flipX = false;
+     	}
+
 
         // Set the X component for the movement vector
         movement = new Vector2(
           speed.x * inputX,
           rigidbodyComponent.velocity.y);
-
-        // Check where our hero is facing
-        if(inputX > 0)
-        {
-            spriterendererComponent.flipX = false;
-        }
-
-        if (inputX < 0)
-        {
-            spriterendererComponent.flipX = true;
-        }
 
 
         // Set the y component of the movement vector

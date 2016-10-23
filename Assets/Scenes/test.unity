@@ -664,6 +664,26 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014043584666, guid: d45411d7cb3d3d642b395fc5f786344a,
+        type: 2}
+      propertyPath: unlockTurn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014043584666, guid: d45411d7cb3d3d642b395fc5f786344a,
+        type: 2}
+      propertyPath: unlockPush
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014043584666, guid: d45411d7cb3d3d642b395fc5f786344a,
+        type: 2}
+      propertyPath: unlockDoubleJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000013973191584, guid: d45411d7cb3d3d642b395fc5f786344a,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d45411d7cb3d3d642b395fc5f786344a, type: 2}
   m_IsPrefabParent: 0
