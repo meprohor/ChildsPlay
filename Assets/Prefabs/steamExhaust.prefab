@@ -24,7 +24,7 @@ GameObject:
   - 114: {fileID: 114000011463072166}
   m_Layer: 0
   m_Name: steamExhaust
-  m_TagString: Platform
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011468137252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.75, y: -11.73, z: 0}
+  m_LocalPosition: {x: -6.9, y: -5.8, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activated: 0
-  velocity: 70
-  choiceIndex: 1
+  velocity: 60
+  choiceIndex: 0
   prefab: {fileID: 1000012179268912, guid: d87b607b6ff3d8743ad7ab7a10bc88a3, type: 2}
 --- !u!212 &212000012702417872
 SpriteRenderer:

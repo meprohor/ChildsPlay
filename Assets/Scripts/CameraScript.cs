@@ -33,7 +33,7 @@ public class CameraScript : MonoBehaviour {
 		}
 
 		// Move the camera vertically only if an object jumped on a higher platform or exceeded the specified vertical speed limit
-		if((followedObject.GetComponent<PlayerScript>().isGrounded && Mathf.Abs(cameraPosition.y - objectPosition.y) > 0.15f) || rigidBody.velocity.y > 35){
+		if((followedObject.GetComponent<PlayerScript>().isGrounded && Mathf.Abs(cameraPosition.y - objectPosition.y) > 0.15f) || Mathf.Abs(rigidBody.velocity.y) > 35){
 			// Set camera velocity vector so that it would followed the object vertically
 			Vector3 directionalVector = (objectPosition - cameraPosition).normalized * 50;
 			desiredVelocity.y = directionalVector.y;

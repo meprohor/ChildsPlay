@@ -13,15 +13,15 @@ public class SteamExhaustScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player") && activated){
-        	Vector2 vel = other.gameObject.GetComponent<Rigidbody2D>().velocity;
-        	vel.y = velocity;
-        	other.gameObject.GetComponent<Rigidbody2D>().velocity = vel;
+            other.gameObject.SendMessage("Jump", velocity);
         }
     }
 
     void Activate(){
-    	if(choiceIndex == 1)
+    	if(choiceIndex == 1){
   			InvokeRepeating("CreatePlatform", 0.0f, 15.0f);
+            gameObject.tag = "Platform";
+        }
   		else
   			activated = true;	
     }

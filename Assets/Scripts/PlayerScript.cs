@@ -26,7 +26,7 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer spriterendererComponent;
 
     // Bool variable to check if the object is standing on the ground and can jump
-   // [HideInInspector]
+    //[HideInInspector]
     public bool isGrounded = true;
     private GameObject groundedOn = null;
 
@@ -42,7 +42,7 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag("Platform")){
             foreach (ContactPoint2D contact in other.contacts)
             {
-                if (contact.normal.y > 0){
+                if (contact.point.y < transform.position.y){
                     isGrounded = true;
                     groundedOn = other.gameObject;
                     break;
@@ -66,12 +66,18 @@ public class PlayerScript : MonoBehaviour
         spriterendererComponent = GetComponent<SpriteRenderer>();
     }
 
+    void Jump(float spd){
+    	Vector2 v = rigidbodyComponent.velocity;
+    	v.y = spd;
+    	rigidbodyComponent.velocity = v;
+    }
+
     void Update()
     {
         // Retrieve axis information
         float inputX = 0;
         if(Input.GetButton("Vertical"))
-        	 inputX = 1;
+        	 inputX = Input.GetAxis("Vertical");
         
        	if(Time.time >= timestamp && Input.GetButton("Turn")){
        		turn = !turn;
@@ -95,9 +101,7 @@ public class PlayerScript : MonoBehaviour
 
         // Set the y component of the movement vector
         if (unlockJump && Input.GetButton("Jump") && isGrounded)
-        {
-            movement.y = speed.y;
-        }
+           Jump(speed.y);
     }
 
 
@@ -106,16 +110,7 @@ public class PlayerScript : MonoBehaviour
         // Move the game object
         rigidbodyComponent.velocity = movement;
 
-        float angle = ClampAngle(movement.x, -25, 25);
-        rigidbodyComponent.MoveRotation(angle);
+        rigidbodyComponent.MoveRotation(movement.x);
     }
 
-    public static float ClampAngle (float angle, float min, float max)
- {
-     if (angle < -360F)
-         angle += 360F;
-     if (angle > 360F)
-         angle -= 360F;
-     return Mathf.Clamp (angle, min, max);
- }
 }

@@ -684,6 +684,11 @@ Prefab:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50000011438990058, guid: d45411d7cb3d3d642b395fc5f786344a,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d45411d7cb3d3d642b395fc5f786344a, type: 2}
   m_IsPrefabParent: 0
@@ -1013,11 +1018,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013832340142, guid: 772ec47c994ef8442a6d88563637fa21, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.75
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: 4000013832340142, guid: 772ec47c994ef8442a6d88563637fa21, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -11.73
+      value: -11.4
       objectReference: {fileID: 0}
     - target: {fileID: 4000013832340142, guid: 772ec47c994ef8442a6d88563637fa21, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1042,6 +1047,11 @@ Prefab:
     - target: {fileID: 4000013832340142, guid: 772ec47c994ef8442a6d88563637fa21, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011463072166, guid: 772ec47c994ef8442a6d88563637fa21,
+        type: 2}
+      propertyPath: choiceIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 772ec47c994ef8442a6d88563637fa21, type: 2}
