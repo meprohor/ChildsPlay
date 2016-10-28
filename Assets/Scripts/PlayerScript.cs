@@ -22,9 +22,6 @@ public class PlayerScript : MonoBehaviour
     // Store RigidBody component
     private Rigidbody2D rigidbodyComponent;
 
-    // Store SpriteRenderer component
-    private SpriteRenderer spriterendererComponent;
-
     // Bool variable to check if the object is standing on the ground and can jump
     //[HideInInspector]
     public bool isGrounded = true;
@@ -37,12 +34,12 @@ public class PlayerScript : MonoBehaviour
     private float timeBetweenTurns = 0.3333f;
 	private float timestamp;
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Platform")){
             foreach (ContactPoint2D contact in other.contacts)
             {
-                if (contact.point.y < transform.position.y){
+                if (contact.point.y < transform.position.y/2){
                     isGrounded = true;
                     groundedOn = other.gameObject;
                     break;
@@ -62,8 +59,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rigidbodyComponent = GetComponent<Rigidbody2D>();
-
-        spriterendererComponent = GetComponent<SpriteRenderer>();
     }
 
     void Jump(float spd){
@@ -84,12 +79,19 @@ public class PlayerScript : MonoBehaviour
        		timestamp = Time.time + timeBetweenTurns;
        	}
 
+       	Vector3 temp = transform.localScale;
         if(turn){
             inputX *= -1;
-            spriterendererComponent.flipX = true;
+            if(transform.localScale.x > 0){
+            	temp.x *= -1;
+            	transform.localScale = temp;
+            }
         } 
      	else{
-     		spriterendererComponent.flipX = false;
+     		if(transform.localScale.x < 0){
+            	temp.x *= -1;
+            	transform.localScale = temp;
+            }
      	}
 
 
@@ -109,8 +111,6 @@ public class PlayerScript : MonoBehaviour
     {
         // Move the game object
         rigidbodyComponent.velocity = movement;
-
-        rigidbodyComponent.MoveRotation(movement.x);
     }
 
 }
