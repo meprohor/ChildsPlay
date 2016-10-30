@@ -21,6 +21,7 @@ public class PlayerScript : MonoBehaviour
 
     // Store RigidBody component
     private Rigidbody2D rigidbodyComponent;
+    private Animator animatorComponent;
 
     // Bool variable to check if the object is standing on the ground and can jump
     //[HideInInspector]
@@ -59,6 +60,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rigidbodyComponent = GetComponent<Rigidbody2D>();
+
+        animatorComponent = GetComponentInChildren<Animator>();
     }
 
     void Jump(float spd){
@@ -79,21 +82,25 @@ public class PlayerScript : MonoBehaviour
        		timestamp = Time.time + timeBetweenTurns;
        	}
 
+       	// Turn player
        	Vector3 temp = transform.localScale;
         if(turn){
-            inputX *= -1;
+            inputX = -1*Mathf.Abs(inputX);
             if(transform.localScale.x > 0){
             	temp.x *= -1;
             	transform.localScale = temp;
             }
         } 
      	else{
+     		inputX = Mathf.Abs(inputX);
      		if(transform.localScale.x < 0){
             	temp.x *= -1;
             	transform.localScale = temp;
-            }
-     	}
+     		}
+        }
 
+
+        animatorComponent.SetFloat("Speed", Mathf.Abs(rigidbodyComponent.velocity.x));
 
         // Set the X component for the movement vector
         movement = new Vector2(
@@ -111,6 +118,7 @@ public class PlayerScript : MonoBehaviour
     {
         // Move the game object
         rigidbodyComponent.velocity = movement;
+
     }
 
 }

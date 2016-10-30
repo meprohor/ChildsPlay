@@ -7,8 +7,11 @@ public class LeverScript : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other)
     {
-        GetComponent<SpriteRenderer>().flipX = false;
         affected.SendMessage("Activate");
+
+        Animator animatorComponent = GetComponentInChildren<Animator>();
+        animatorComponent.SetTrigger("Activated");
+
         Destroy(GetComponent<BoxCollider2D>());
     }
 }
