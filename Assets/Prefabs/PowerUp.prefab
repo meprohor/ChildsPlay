@@ -67,7 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b37177a15ea7a843bd2d9ec6a3734fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affected: {fileID: 1000011625543142, guid: d45411d7cb3d3d642b395fc5f786344a, type: 2}
   choiceIndex: 1
 --- !u!212 &212000012210255940
 SpriteRenderer:

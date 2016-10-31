@@ -10,10 +10,16 @@ public class SteamExhaustScript : MonoBehaviour {
 
     public GameObject prefab;
 
-	void OnCollisionEnter2D(Collision2D other)
+	void OnCollisionStay2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player") && activated){
-            other.gameObject.SendMessage("Jump", velocity);
+        	foreach (ContactPoint2D contact in other.contacts){
+                if (contact.point.y > transform.position.y && contact.point.x >= transform.position.x - 1
+                										   && contact.point.x < transform.position.x + GetComponent<BoxCollider2D>().bounds.size.x){
+            		other.gameObject.SendMessage("Jump", velocity);
+            		break;
+                }
+            }
         }
     }
 
@@ -22,12 +28,16 @@ public class SteamExhaustScript : MonoBehaviour {
   			InvokeRepeating("CreatePlatform", 0.0f, 15.0f);
             gameObject.tag = "Platform";
         }
-  		else
-  			activated = true;	
+  		else{
+  			activated = true;
+  			gameObject.tag = "Untagged";	
+  		}
     }
 
     void CreatePlatform(){
-    	Instantiate(prefab, transform);
+    	Vector3 pos = transform.position;
+    	pos.y += GetComponent<BoxCollider2D>().bounds.size.y;
+    	Instantiate(prefab, pos, transform.rotation);
     }
 
 	// Use this for initialization

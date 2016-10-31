@@ -22,6 +22,7 @@ GameObject:
   - 212: {fileID: 212000010490215418}
   - 61: {fileID: 61000012054678202}
   - 114: {fileID: 114000011307361722}
+  - 253: {fileID: 253000011268251766}
   m_Layer: 0
   m_Name: steam
   m_TagString: Platform
@@ -51,8 +52,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_Offset: {x: -0.019119423, y: -0.028678417}
   serializedVersion: 2
   m_Size: {x: 0.6664288, y: 0.89761895}
@@ -100,3 +101,21 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!253 &253000011268251766
+BuoyancyEffector2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012179268912}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_SurfaceLevel: 1
+  m_Density: 2
+  m_LinearDrag: 2
+  m_AngularDrag: 0
+  m_FlowAngle: 0
+  m_FlowMagnitude: 0
+  m_FlowVariation: 0
