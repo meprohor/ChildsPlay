@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Platform
   - ShowOnPause
+  - ShowOnGameOver
+  - GameOverMenu
   - Door
   layers:
   - Default

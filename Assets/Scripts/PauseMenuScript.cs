@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class PauseMenuScript : MonoBehaviour{
 	GameObject[] pauseObjects;
 
+    private float timeBetweenPauses = 0.3333f;
+	private float timestamp;
+
 	// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
@@ -16,10 +19,10 @@ public class PauseMenuScript : MonoBehaviour{
 	// Update is called once per frame
 	void Update () {
 		//uses the p button to pause and unpause the game
-		if(Input.GetButton("Pause"))
-		{
+		if(Time.realtimeSinceStartup >= timestamp && Input.GetButton("Pause")){
 			pauseControl();
-		}
+       		timestamp = Time.realtimeSinceStartup + timeBetweenPauses;
+       	}
 	}
 
 
