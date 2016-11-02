@@ -32,8 +32,21 @@ public class PlayerScript : MonoBehaviour
     // true - t-roller facing left
     private bool turn = false;
 
+    private GameObject soundEffectsHelper;
+
     private float timeBetweenTurns = 0.3333f;
 	private float timestamp;
+
+    void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.CompareTag("Platform") && !isGrounded){
+            foreach (ContactPoint2D contact in other.contacts)
+            {
+                if (contact.point.y < transform.position.y/2){
+                    soundEffectsHelper.SendMessage("FallFromJumpSound");
+                }
+            }
+        }
+    }
 
     void OnCollisionStay2D(Collision2D other)
     {
@@ -62,9 +75,12 @@ public class PlayerScript : MonoBehaviour
         rigidbodyComponent = GetComponent<Rigidbody2D>();
 
         animatorComponent = GetComponentInChildren<Animator>();
+
+        soundEffectsHelper = GameObject.Find("soundEffectsHelper");
     }
 
     void Jump(float spd){
+        soundEffectsHelper.SendMessage("JumpingSound");
     	Vector2 v = rigidbodyComponent.velocity;
     	v.y = spd;
     	rigidbodyComponent.velocity = v;
@@ -98,7 +114,6 @@ public class PlayerScript : MonoBehaviour
             	transform.localScale = temp;
      		}
         }
-
 
         animatorComponent.SetFloat("Speed", Mathf.Abs(rigidbodyComponent.velocity.x)/15.0f);
 
