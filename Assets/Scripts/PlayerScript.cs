@@ -100,7 +100,7 @@ public class PlayerScript : MonoBehaviour
         }
 
 
-        animatorComponent.SetFloat("Speed", Mathf.Abs(rigidbodyComponent.velocity.x));
+        animatorComponent.SetFloat("Speed", Mathf.Abs(rigidbodyComponent.velocity.x)/15.0f);
 
         // Set the X component for the movement vector
         movement = new Vector2(

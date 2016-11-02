@@ -82,7 +82,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010621168462}
   - 95: {fileID: 95000013082805342}
-  - 61: {fileID: 61000013110617604}
   - 50: {fileID: 50000011688758254}
   m_Layer: 0
   m_Name: doorAnimation
@@ -99,6 +98,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011396191432}
+  - 61: {fileID: 61000011993364884}
+  - 114: {fileID: 114000012977335000}
   m_Layer: 0
   m_Name: tunnelDoor
   m_TagString: Untagged
@@ -173,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012452328036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10.449964, y: 1.2260451, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -236,12 +237,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61000013110617604
+--- !u!61 &61000011993364884
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012002561540}
+  m_GameObject: {fileID: 1000012452328036}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -267,6 +268,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000012977335000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012452328036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cf6c83665a807479c55d079f9404d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  open: 0
 --- !u!212 &212000012155747878
 SpriteRenderer:
   m_ObjectHideFlags: 1
