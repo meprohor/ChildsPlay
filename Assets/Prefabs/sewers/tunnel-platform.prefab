@@ -23,6 +23,7 @@ GameObject:
   - 61: {fileID: 61000012494855150}
   - 50: {fileID: 50000011088514366}
   - 61: {fileID: 61000010728568598}
+  - 68: {fileID: 68000013349418874}
   m_Layer: 0
   m_Name: tunnel-platform
   m_TagString: Platform
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010132578570}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -23.71, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -66,7 +67,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010132578570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -88,6 +89,24 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 4.559798}
   serializedVersion: 2
   m_Size: {x: 7.92, y: 0.29040432}
+--- !u!68 &68000013349418874
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010132578570}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -4.155591}
+  m_Points:
+  - {x: -3.96, y: 0.5494085}
+  - {x: 3.96, y: 0.5494085}
+  - {x: 3.96, y: -0.5494085}
+  - {x: -3.96, y: -0.5494085}
+  - {x: -3.96, y: 0.5494085}
 --- !u!212 &212000011146398146
 SpriteRenderer:
   m_ObjectHideFlags: 1

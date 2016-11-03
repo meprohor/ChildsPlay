@@ -41,7 +41,7 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag("Platform") && !isGrounded){
             foreach (ContactPoint2D contact in other.contacts)
             {
-                if (contact.point.y < transform.position.y/2){
+                if (contact.point.y < transform.position.y){
                     soundEffectsHelper.SendMessage("FallFromJumpSound");
                 }
             }
@@ -53,7 +53,7 @@ public class PlayerScript : MonoBehaviour
         if(other.gameObject.CompareTag("Platform")){
             foreach (ContactPoint2D contact in other.contacts)
             {
-                if (contact.point.y < transform.position.y/2){
+                if (contact.point.y < transform.position.y){
                     isGrounded = true;
                     groundedOn = other.gameObject;
                     break;
