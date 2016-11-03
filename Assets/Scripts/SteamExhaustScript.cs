@@ -10,9 +10,11 @@ public class SteamExhaustScript : MonoBehaviour {
 
     public GameObject prefab;
 
+    private GameObject platform = null;
+
 	void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Player") && activated){
+        if(other.gameObject.CompareTag("Player") && activated && choiceIndex == 0){
         	foreach (ContactPoint2D contact in other.contacts){
                 if (contact.point.y > transform.position.y && contact.point.x >= transform.position.x - 1
                 										   && contact.point.x < transform.position.x + GetComponent<BoxCollider2D>().bounds.size.x){
@@ -24,28 +26,28 @@ public class SteamExhaustScript : MonoBehaviour {
     }
 
     void Activate(){
-    	if(choiceIndex == 1){
-  			InvokeRepeating("CreatePlatform", 0.0f, 15.0f);
-            gameObject.tag = "Platform";
+        activated = !activated;
+        if(activated){
+            if(choiceIndex == 1){
+                InvokeRepeating("CreatePlatform", 0.0f, 15.0f);
+                gameObject.tag = "Platform";
+            }
+  		    else{
+                gameObject.tag = "Untagged";	
+  		    }
         }
-  		else{
-  			activated = true;
-  			gameObject.tag = "Untagged";	
-  		}
+        else{
+            CancelInvoke();
+            if(platform != null){
+                platform.gameObject.SendMessage("DestroyPlatform");
+                platform = null;
+            }
+        }
     }
 
     void CreatePlatform(){
     	Vector3 pos = transform.position;
     	pos.y += GetComponent<BoxCollider2D>().bounds.size.y;
-    	Instantiate(prefab, pos, transform.rotation);
+    	platform = (GameObject)Instantiate(prefab, pos, transform.rotation);
     }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
 }

@@ -3,10 +3,12 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour {
-GameObject[] pauseObjects;
+	GameObject[] pauseObjects;
+	public static bool IsGameOver;
 
 	// Use this for initialization
 	void Start () {
+		IsGameOver = false;
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
 		hideGameOver();
@@ -19,6 +21,7 @@ GameObject[] pauseObjects;
 
 	//controls the pausing of the scene
 	public void gameOver(){
+		IsGameOver = true;
 		Time.timeScale = 0;
 		showOnGameOver();
 	}

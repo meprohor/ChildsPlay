@@ -19,7 +19,7 @@ public class PauseMenuScript : MonoBehaviour{
 	// Update is called once per frame
 	void Update () {
 		//uses the p button to pause and unpause the game
-		if(Time.realtimeSinceStartup >= timestamp && Input.GetButton("Pause")){
+		if(Time.realtimeSinceStartup >= timestamp && Input.GetButton("Pause") && !GameOverScript.IsGameOver){
 			pauseControl();
        		timestamp = Time.realtimeSinceStartup + timeBetweenPauses;
        	}
