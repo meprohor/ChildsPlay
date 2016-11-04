@@ -3,14 +3,16 @@ using System.Collections;
 
 public class KillZoneScript : MonoBehaviour {
 
-	// Use this for initialization
+	// Turn off sprite on start, we only need it for placement in editor
 	void Start () {
 		GetComponent<SpriteRenderer>().enabled = false;
 	}
 	
+	// When player enters the killzone, GameOverMenu receives a message and stops the game
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.CompareTag("Player")){
-			 GameObject.FindWithTag("GameOverMenu").SendMessage("gameOver");
+			 GameObject.FindWithTag("GameOverMenu").SendMessage("GameOver");
 		}
 	}
+	
 }

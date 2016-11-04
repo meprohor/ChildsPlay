@@ -6,40 +6,41 @@ public class GameOverScript : MonoBehaviour {
 	GameObject[] pauseObjects;
 	public static bool IsGameOver;
 
-	// Use this for initialization
+	// Initialize variables and hide GameOverMenu
 	void Start () {
 		IsGameOver = false;
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
-		hideGameOver();
+		HideGameOver();
 	}
 
-	//Reloads the Level
+	// Reloads the Level
 	public void Reload(){
 		 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
-	//controls the pausing of the scene
-	public void gameOver(){
+	// Controls the pausing of the scene
+	public void GameOver(){
 		IsGameOver = true;
 		Time.timeScale = 0;
-		showOnGameOver();
+		ShowOnGameOver();
 	}
 
-	//shows objects with ShowOnPause tag
-	public void showOnGameOver(){
+	// Shows objects with ShowOnPause tag
+	public void ShowOnGameOver(){
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(true);
 		}
 	}
 
-	//hides objects with ShowOnPause tag
-	public void hideGameOver(){
+	// Hides objects with ShowOnPause tag
+	public void HideGameOver(){
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(false);
 		}
 	}
 
+	// Exits the game 
 	public void Exit(){
 		Application.Quit();
 	}

@@ -24,26 +24,30 @@ public class SoundEffectsHelper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(player.GetComponent<Rigidbody2D>().velocity.x > 0 || player.GetComponent<Rigidbody2D>().velocity.x < 0  &&   player.GetComponent<PlayerScript>().isGrounded){
-			if(!source2.isPlaying){
-				source2.Play();
-			}
-		}else{
-			source2.Pause();
-		}
+		MovingSound();
 	}
 
 	void JumpingSound(){
-		if(!source.isPlaying || currentSound != jumpingSound){
+		if(!source.isPlaying || currentSound != jumpingSound && !GameOverScript.IsGameOver){
 			currentSound = jumpingSound;
 			source.PlayOneShot(currentSound, 0.2f);
 		}
 	}
 
-	void FallFromJumpSound(){
-		if(!source.isPlaying || currentSound != fallFromJumpSound){
+	void FallingSound(){
+		if(!source.isPlaying || currentSound != fallFromJumpSound && !GameOverScript.IsGameOver){
 			currentSound = fallFromJumpSound;
 			source.PlayOneShot(currentSound, 0.2f);
+		}
+	}
+
+	void MovingSound(){
+		if(player.GetComponent<Rigidbody2D>().velocity.x > 0 || player.GetComponent<Rigidbody2D>().velocity.x < 0  &&   player.GetComponent<PlayerScript>().isGrounded && !GameOverScript.IsGameOver){
+			if(!source2.isPlaying){
+				source2.Play();
+			}
+		}else{
+			source2.Pause();
 		}
 	}
 }

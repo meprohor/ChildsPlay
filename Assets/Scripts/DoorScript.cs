@@ -7,6 +7,7 @@ public class DoorScript : MonoBehaviour {
 	private Animator animatorComponent;
 	public bool open = false;
 
+	// Initialize variables and set the starting door state
 	void Start(){
 		animatorComponent = GetComponentInChildren<Animator>();
 		boxColliderComponent = GetComponent<BoxCollider2D>();
@@ -16,6 +17,7 @@ public class DoorScript : MonoBehaviour {
 			Close();
 	}
 
+	// On lever activation change door state
 	void Activate(){
 		open = !open;
 		if(open)
@@ -24,11 +26,13 @@ public class DoorScript : MonoBehaviour {
 			Close();
 	}
 
+	// Open the door 
 	void Open(){
 		boxColliderComponent.enabled = false;
 		animatorComponent.SetBool("Open", true);
 	}
 
+	// Close the door
 	void Close(){
 		boxColliderComponent.enabled = true;
 		animatorComponent.SetBool("Open", false);
