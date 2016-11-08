@@ -32,12 +32,21 @@ public class PlayerScript : MonoBehaviour
     // true - t-roller facing left
     private bool turn = false;
 
+    // GameObject which plays sound effects
     private GameObject soundEffectsHelper;
 
-    private float timeBetweenTurns = 0.3333f;
-	private float timestamp;
+    // Stop player from smashing button too fast
+    private float timeBetweenPresses = 0.3333f;
+	private float timestampTurns;
 
+    // For blocking user input when the game is over
     private bool isGameOver = false;
+
+    // For allowing player to double jump
+    private bool doubleJump = true;
+
+    // For determining if the player pressed jump during this frame
+    private bool jumped = false;
 
     // Make a falling sound when player hits the ground
     void OnCollisionEnter2D(Collision2D other)
@@ -117,9 +126,9 @@ public class PlayerScript : MonoBehaviour
                 inputX = Input.GetAxis("Vertical");
 
             // We only allow 3 button presses in one second
-            if(Time.time >= timestamp && Input.GetButton("Turn")){
+            if(Time.time >= timestampTurns && Input.GetButton("Turn") && unlockTurn){
                 turn = !turn;
-                timestamp = Time.time + timeBetweenTurns;
+                timestampTurns = Time.time + timeBetweenPresses;
             }
 
        	    // Turn player
@@ -147,9 +156,15 @@ public class PlayerScript : MonoBehaviour
              rigidbodyComponent.velocity.y);
 
 
-            // Make a jump
-            if (unlockJump && Input.GetButton("Jump") && isGrounded)
-               Jump(speed.y);
+            // Jump or double jump
+            if(unlockJump && Input.GetKeyDown(KeyCode.Space)){
+                if(isGrounded || (doubleJump && unlockDoubleJump)){
+                    jumped = true;
+                    if(!isGrounded && doubleJump){
+                        doubleJump = false;
+                    }
+                }
+            }
         } else {
             movement = Vector3.zero;
         }
@@ -160,6 +175,18 @@ public class PlayerScript : MonoBehaviour
     {
         // Move the game object
         rigidbodyComponent.velocity = movement;
+
+        // If player pressed jump during frame update
+        // Set y velocity
+        if(jumped){
+            Jump(speed.y);
+            jumped = false;
+        }
+
+        // If player is grounded
+        // Recharge double jump
+        if(isGrounded)
+            doubleJump = true;
     }
 
 }
