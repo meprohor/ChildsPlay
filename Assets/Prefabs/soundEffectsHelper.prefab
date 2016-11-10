@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000013346859750}
+  m_IsPrefabParent: 1
+--- !u!1 &1000013346859750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013161929330}
+  - 114: {fileID: 114000014011833762}
+  m_Layer: 0
+  m_Name: soundEffectsHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000013161929330
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013346859750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -199.25124, y: 1.7945622, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000014011833762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013346859750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e22c8d900655f479c6ef9b323937db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpingSound:
+  - {fileID: 8300000, guid: f6d47ee4f5a92f94aa28b9d00cbe48ce, type: 3}
+  - {fileID: 8300000, guid: 02cca8330aad89940adf1258e508b0c3, type: 3}
+  - {fileID: 8300000, guid: 2277b59ee7c5a5e4791e2ccbda855b61, type: 3}
+  - {fileID: 8300000, guid: c4c1cfd87348c6143be712a33118f1de, type: 3}
+  - {fileID: 8300000, guid: 50fb5e69f7a548a419e2ef8e8ffa37b0, type: 3}
+  - {fileID: 8300000, guid: 02ae5922d6356744583a98ecf8134040, type: 3}
+  fallFromJumpSound:
+  - {fileID: 8300000, guid: 6e0b8764df9866e4e9b26edd222ad3c9, type: 3}
+  - {fileID: 8300000, guid: 8d2f8e7805683c14a817fd98237a7517, type: 3}
+  - {fileID: 8300000, guid: 870bd20313a18c340bffd84f6008dcfb, type: 3}
+  - {fileID: 8300000, guid: 61c9b623763b9094a8af34357ae13b8b, type: 3}
+  - {fileID: 8300000, guid: af253cb2b34d7024eae0726264219283, type: 3}
+  movingSound: {fileID: 8300000, guid: 32be062be66a5bc4dac6343616ebef0e, type: 3}
+  musicTheme: {fileID: 8300000, guid: a04a8ad99c3e60f47afd3dd89ae3cac5, type: 3}
+  volumeJumpFall: 0.1
+  volumeTheme: 1
