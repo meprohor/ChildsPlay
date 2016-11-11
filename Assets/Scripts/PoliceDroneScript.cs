@@ -3,16 +3,6 @@ using System.Collections;
 
 public class PoliceDroneScript : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	// If player touched the drone, trigger game over
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.CompareTag("Player")){

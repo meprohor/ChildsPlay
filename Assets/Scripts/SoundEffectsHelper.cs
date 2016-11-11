@@ -16,6 +16,7 @@ public class SoundEffectsHelper : MonoBehaviour {
 	private AudioSource characterJumpFall;
 	private AudioSource characterMove;
 	private AudioSource theme;
+	private AudioSource boxSound;
 
 	// This is for checking if player is moving
 	private GameObject player;
@@ -40,19 +41,29 @@ public class SoundEffectsHelper : MonoBehaviour {
 
 		// Initialize music theme source
 		theme = AddAudio(true, true, volumeTheme);
-		theme.clip = musicTheme;
-		theme.Play();
+		MusicTheme();
+
+		// Initialize box sound source
+		boxSound = AddAudio(false, true, 0.5f);
 
 		// Find the player gameObject
 		player = GameObject.FindWithTag("Player");
+	}
+
+	// Play Music Theme
+	void MusicTheme(){
+		theme.clip = musicTheme;
+		theme.Play();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// Play moving sound 
 		MovingSound();
+		theme.volume = volumeTheme;
 	}
 
+	// Play sound when player jumped
 	void JumpingSound(){
 		// If it's not Game Over play a sound
 		if(!GameOverScript.IsGameOver){
@@ -60,6 +71,7 @@ public class SoundEffectsHelper : MonoBehaviour {
 		}
 	}
 
+	// Play sound when player hits the ground
 	void FallingSound(){
 		// If it's not Game Over play a sound
 		if(!GameOverScript.IsGameOver){
@@ -67,6 +79,7 @@ public class SoundEffectsHelper : MonoBehaviour {
 		}
 	}
 
+	// Play sound when player moves horizontally
 	void MovingSound(){
 		// Check if player is moving and play movement sound
 		if(player.GetComponent<Rigidbody2D>().velocity.x > 0 || player.GetComponent<Rigidbody2D>().velocity.x < 0  &&   player.GetComponent<PlayerScript>().isGrounded && !GameOverScript.IsGameOver){
@@ -75,6 +88,13 @@ public class SoundEffectsHelper : MonoBehaviour {
 			}
 		}else{
 			characterMove.Pause();
+		}
+	}
+
+	// Play sound when box hits the ground
+	void BoxSound(){
+		if(!GameOverScript.IsGameOver){
+			boxSound.PlayOneShot(fallFromJumpSound[Random.Range(0, fallFromJumpSound.Length)], volumeJumpFall);
 		}
 	}
 }

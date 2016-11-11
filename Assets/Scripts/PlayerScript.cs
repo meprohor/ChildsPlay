@@ -39,6 +39,10 @@ public class PlayerScript : MonoBehaviour
     private float timeBetweenPresses = 0.3333f;
 	private float timestampTurns;
 
+    // TimeStamp for playing idle animation
+    private float timeUntilIdle = 1.0f;
+    private float idleStamp;
+
     // For blocking user input when the game is over
     private bool isGameOver = false;
 
@@ -56,6 +60,7 @@ public class PlayerScript : MonoBehaviour
             {
                 if (contact.point.y < transform.position.y){
                     soundEffectsHelper.SendMessage("FallingSound");
+                    animatorComponent.SetBool("Jump", false);
                 }
             }
         }
@@ -93,11 +98,15 @@ public class PlayerScript : MonoBehaviour
         animatorComponent = GetComponentInChildren<Animator>();
 
         soundEffectsHelper = GameObject.Find("soundEffectsHelper");
+
+        idleStamp = timeUntilIdle;
     }
 
     // Jump up with velocity spd
     void Jump(float spd)
     {
+        animatorComponent.SetBool("Jump", true);
+
         // Make a jumping sound
         soundEffectsHelper.SendMessage("JumpingSound");
     	
@@ -119,6 +128,14 @@ public class PlayerScript : MonoBehaviour
     {
         // If the game is over block all input
         if(!isGameOver){
+            if(Time.time >= idleStamp){
+                animatorComponent.SetBool("Idle", true);
+            }
+            if(Input.anyKey){
+                idleStamp = Time.time + timeUntilIdle;
+                animatorComponent.SetBool("Idle", false);
+            }
+
             // Retrieve axis information
             float inputX = 0;
 
