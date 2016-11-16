@@ -65,6 +65,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 61c9b623763b9094a8af34357ae13b8b, type: 3}
   - {fileID: 8300000, guid: af253cb2b34d7024eae0726264219283, type: 3}
   movingSound: {fileID: 8300000, guid: 32be062be66a5bc4dac6343616ebef0e, type: 3}
-  musicTheme: {fileID: 8300000, guid: a04a8ad99c3e60f47afd3dd89ae3cac5, type: 3}
-  volumeJumpFall: 0.1
+  musicTheme: {fileID: 8300000, guid: b79084684dc034c4eb5cf5f11b0f97b8, type: 3}
+  volumeJumpFall: 0.03
   volumeTheme: 1

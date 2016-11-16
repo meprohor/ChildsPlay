@@ -127,7 +127,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         // If the game is over block all input
-        if(!isGameOver){
+        if(!isGameOver && !PauseMenuScript.isOnPause){
             if(Time.time >= idleStamp){
                 animatorComponent.SetBool("Idle", true);
             }
@@ -182,9 +182,9 @@ public class PlayerScript : MonoBehaviour
                     }
                 }
             }
-        } else {
-            movement = Vector3.zero;
         }
+        if(isGameOver)
+                movement = Vector3.zero;
     }
 
 
