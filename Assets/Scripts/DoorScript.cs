@@ -3,14 +3,14 @@ using System.Collections;
 
 public class DoorScript : MonoBehaviour {
 
-	private BoxCollider2D boxColliderComponent;
+	//private BoxCollider2D boxColliderComponent;
 	private Animator animatorComponent;
 	public bool open = false;
 
 	// Initialize variables and set the starting door state
 	void Start(){
 		animatorComponent = GetComponentInChildren<Animator>();
-		boxColliderComponent = GetComponent<BoxCollider2D>();
+		//boxColliderComponent = GetComponent<BoxCollider2D>();
 		if(open)
 			Open();
 		else
@@ -28,13 +28,13 @@ public class DoorScript : MonoBehaviour {
 
 	// Open the door 
 	void Open(){
-		boxColliderComponent.enabled = false;
+		//boxColliderComponent.enabled = false; controlled by animator
 		animatorComponent.SetBool("Open", true);
 	}
 
 	// Close the door
 	void Close(){
-		boxColliderComponent.enabled = true;
+		//boxColliderComponent.enabled = true; controlled by animator
 		animatorComponent.SetBool("Open", false);
 	}
 }

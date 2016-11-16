@@ -84,6 +84,7 @@ GameObject:
   - 4: {fileID: 4000013832837972}
   - 95: {fileID: 95000013460618244}
   - 50: {fileID: 50000011769832896}
+  - 61: {fileID: 61000014247880840}
   m_Layer: 0
   m_Name: doorAnimation
   m_TagString: Untagged
@@ -99,7 +100,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014127357210}
-  - 61: {fileID: 61000013207506802}
   - 114: {fileID: 114000012837240038}
   m_Layer: 0
   m_Name: simpleDoor
@@ -213,7 +213,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012526549000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.36855, y: 1.2666054, z: 0}
+  m_LocalPosition: {x: 17.78, y: 7.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -237,12 +237,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61000013207506802
+--- !u!61 &61000014247880840
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012526549000}
+  m_GameObject: {fileID: 1000012160106178}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
