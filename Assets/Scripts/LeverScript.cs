@@ -23,7 +23,7 @@ public class LeverScript : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other)
     {
     	/* Check if it is player who's touching the lever */
-    	if(other.gameObject.CompareTag("Player")){
+    	if(other.gameObject.CompareTag("Player") && !other.isTrigger){
     		/* Check if the right amount of time has passed since you pulled the lever
     			and check if the player pressed the right button */
     		if(Time.time >= timestamp && Input.GetButton("Use")){

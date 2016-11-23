@@ -5,7 +5,7 @@ public class PoliceDroneScript : MonoBehaviour {
 
 	// If player touched the drone, trigger game over
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.gameObject.CompareTag("Player")){
+		if(other.gameObject.CompareTag("Player") && !other.isTrigger){
 			other.gameObject.SendMessage("GameOver");
 			GameObject.FindWithTag("GameOverMenu").GetComponent<GameOverScript>().Invoke("GameOver", 1.10f);
 		}
