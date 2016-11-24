@@ -6,7 +6,7 @@ public class DoorScript : MonoBehaviour {
 	private BoxCollider2D boxColliderComponent;
 	private Animator animatorComponent;
 	public bool open = false;
-	public SpriteRenderer[] spriteRenderers;
+	private SpriteRenderer[] spriteRenderers;
 
 	// Initialize variables and set the starting door state
 	void Start(){
@@ -18,8 +18,6 @@ public class DoorScript : MonoBehaviour {
 			Close();
 
 		spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-		//foreach( SpriteRenderer sprite in spriteRenderers )
-        //    sprite.sortingOrder = -1*(int)transform.position.x+sprite.sortingOrder;
 	}
 
 	// On lever activation change door state
@@ -29,23 +27,25 @@ public class DoorScript : MonoBehaviour {
 			Open();
 		else
 			Close();
+		// Change sorting order after a small delay for the animation to catch up
+		Invoke("ChangeSortingOrder", 1);
 	}
 
 	// Open the door 
 	void Open(){
-		//boxColliderComponent.enabled = false; controlled by animator
 		animatorComponent.SetBool("Open", true);
-
-		foreach( SpriteRenderer sprite in spriteRenderers )
-            sprite.sortingOrder = sprite.sortingOrder - 10;
 	}
 
 	// Close the door
 	void Close(){
-		//boxColliderComponent.enabled = true; controlled by animator
 		animatorComponent.SetBool("Open", false);
+	}
 
+	void ChangeSortingOrder(){
 		foreach( SpriteRenderer sprite in spriteRenderers )
-            sprite.sortingOrder = sprite.sortingOrder + 10;
+			if(open)
+            	sprite.sortingOrder = sprite.sortingOrder - 20;
+            else
+            	sprite.sortingOrder = sprite.sortingOrder + 20;
 	}
 }

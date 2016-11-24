@@ -99,9 +99,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011396191432}
   - 114: {fileID: 114000012977335000}
+  - 61: {fileID: 61000013159244926}
   m_Layer: 0
   m_Name: tunnelDoor
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,6 +311,20 @@ BoxCollider2D:
   m_Offset: {x: 0.6, y: -0.43}
   serializedVersion: 2
   m_Size: {x: 1, y: 7.61}
+--- !u!61 &61000013159244926
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012452328036}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.5606699, y: -1.2098665}
+  serializedVersion: 2
+  m_Size: {x: 2.1213403, y: 9.203482}
 --- !u!95 &95000013082805342
 Animator:
   serializedVersion: 3
@@ -367,7 +382,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1302980909
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 1b8396c2942f6a041b2e78f5dfca6725, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -400,7 +415,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1302980909
-  m_SortingOrder: 1
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: b8cc4703da6ef9941a8c83d83d7a802d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -432,8 +447,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2005188275
-  m_SortingOrder: 4
+  m_SortingLayerID: -1302980909
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a94d5c176e12b394c98e5f1ebae5df84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -465,8 +480,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1302980909
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 3b0e4781bdd65834cb43156fd0614246, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -53,8 +53,8 @@ public class PlayerScript : MonoBehaviour
     private bool jumped = false;
 
     // For dynamic changes to order in layer
-    public SpriteRenderer[] spriteRenderers;
-    public int[] orderOffset;
+    private SpriteRenderer[] spriteRenderers;
+    private int[] orderOffset;
 
     // Make a falling sound when player hits the ground
     void OnCollisionEnter2D(Collision2D other)
@@ -220,28 +220,17 @@ public class PlayerScript : MonoBehaviour
         // Recharge double jump
         if(isGrounded)
             doubleJump = true;
-
-        // Update sprite order
-       // int i=0;
-       // foreach( SpriteRenderer sprite in spriteRenderers )
-        //	sprite.sortingOrder = -1*(int)transform.position.x+orderOffset[i++];
-           // sprite.sortingOrder = -1*(int)sprite.transform.position.x+orderOffset[i++];
     }
 
     void OnTriggerEnter2D(Collider2D other){
     	if(other.gameObject.CompareTag("Door"))
     		if(other.transform.position.x > transform.position.x){
+    			foreach( SpriteRenderer sprite in spriteRenderers )
+    				sprite.sortingOrder += 10;
+    		} else {
     			int i = 0;
     			foreach( SpriteRenderer sprite in spriteRenderers )
-    				sprite.sortingOrder += orderOffset[i++];
-    		} 
-    }
-
-    void OnTriggerExit2D(Collider2D other){
-    	int i = 0;
-    	if(other.gameObject.CompareTag("Door")){
-    		foreach( SpriteRenderer sprite in spriteRenderers )
-    			sprite.sortingOrder = orderOffset[i++];
-    	}
+    				sprite.sortingOrder = orderOffset[i++];
+    		}
     }
 }

@@ -5,6 +5,9 @@ public class BoxScript : MonoBehaviour {
 	// store rigibody component
 	private Rigidbody2D rigidbodyComponent;
 
+	private SpriteRenderer spriteRendererComponent;
+	private int orderOffset;
+
 	// check if box is on the ground
 	private bool isGrounded = true;
     private GameObject groundedOn = null;
@@ -17,6 +20,9 @@ public class BoxScript : MonoBehaviour {
 		rigidbodyComponent = GetComponent<Rigidbody2D>();
 		rigidbodyComponent.isKinematic = true;
 		soundEffectsHelper = GameObject.Find("soundEffectsHelper");
+
+		spriteRendererComponent = GetComponent<SpriteRenderer>();
+		orderOffset = spriteRendererComponent.sortingOrder;
 	}
 
 
@@ -34,6 +40,23 @@ public class BoxScript : MonoBehaviour {
 				soundEffectsHelper.SendMessage("BoxSound");
 			}
 		}
+
+		if(other.gameObject.CompareTag("Door")){
+			if(other.transform.position.x > transform.position.x){
+    			spriteRendererComponent.sortingOrder += 10;
+    		} else {
+    			spriteRendererComponent.sortingOrder = orderOffset;
+    		}
+		}
+
+		if(other.gameObject.CompareTag("Platform")){
+			if(other.transform.position.y < transform.position.y){
+    			spriteRendererComponent.sortingOrder += 1;
+    		} else {
+    			spriteRendererComponent.sortingOrder = orderOffset;
+    		}
+		}
+
 	}
 
     // Check if box left the ground
