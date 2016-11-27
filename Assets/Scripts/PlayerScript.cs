@@ -59,7 +59,7 @@ public class PlayerScript : MonoBehaviour
     // Make a falling sound when player hits the ground
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Platform") && !isGrounded){
+        if((other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("Box")) && !isGrounded){
             foreach (ContactPoint2D contact in other.contacts)
             {
                 if (contact.point.y < transform.position.y){
@@ -73,7 +73,7 @@ public class PlayerScript : MonoBehaviour
     // Check if player's standing on the ground
     void OnCollisionStay2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("Platform")){
+        if(other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("Box")){
             foreach (ContactPoint2D contact in other.contacts)
             {
                 if (contact.point.y < transform.position.y){
@@ -136,6 +136,7 @@ public class PlayerScript : MonoBehaviour
     void GameOver()
     {
         isGameOver = true;
+        animatorComponent.SetBool("Jump", false);
         animatorComponent.SetTrigger("GameOver");
     }
 

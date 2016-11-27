@@ -44,17 +44,13 @@ public class BoxScript : MonoBehaviour {
 		if(other.gameObject.CompareTag("Door")){
 			if(other.transform.position.x > transform.position.x){
     			spriteRendererComponent.sortingOrder += 10;
-    		} else {
-    			spriteRendererComponent.sortingOrder = orderOffset;
-    		}
+    		} 
 		}
 
-		if(other.gameObject.CompareTag("Platform")){
+		if(other.gameObject.CompareTag("Box")){
 			if(other.transform.position.y < transform.position.y){
     			spriteRendererComponent.sortingOrder += 1;
-    		} else {
-    			spriteRendererComponent.sortingOrder = orderOffset;
-    		}
+    		} 
 		}
 
 	}
@@ -66,6 +62,13 @@ public class BoxScript : MonoBehaviour {
             isGrounded = false;
             groundedOn = null;
         }
-    }
 
+        if(other.gameObject.CompareTag("Box") || other.gameObject.CompareTag("Door")){
+			if(other.transform.position.y > transform.position.y){
+    			spriteRendererComponent.sortingOrder = orderOffset;
+    		}
+		}
+
+
+    }
 }

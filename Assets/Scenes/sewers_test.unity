@@ -1894,26 +1894,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011463072166, guid: 772ec47c994ef8442a6d88563637fa21,
-        type: 2}
-      propertyPath: choiceIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000010452434616, guid: 772ec47c994ef8442a6d88563637fa21,
-        type: 2}
-      propertyPath: m_UsedByEffector
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000010452434616, guid: 772ec47c994ef8442a6d88563637fa21,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -0.61156714
-      objectReference: {fileID: 0}
-    - target: {fileID: 61000010452434616, guid: 772ec47c994ef8442a6d88563637fa21,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 4.0668674
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 772ec47c994ef8442a6d88563637fa21, type: 2}
   m_IsPrefabParent: 0
@@ -2113,11 +2093,6 @@ Prefab:
       propertyPath: followedObject
       value: 
       objectReference: {fileID: 229014947}
-    - target: {fileID: 20000013374701150, guid: 53575fe94f5fb9547b850b5e68b38857,
-        type: 2}
-      propertyPath: orthographic size
-      value: 7.9073067
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 53575fe94f5fb9547b850b5e68b38857, type: 2}
   m_IsPrefabParent: 0

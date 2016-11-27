@@ -85,7 +85,7 @@ GameObject:
   - 61: {fileID: 61000011117382926}
   m_Layer: 0
   m_Name: doorAnimation
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011396191432}
   - 114: {fileID: 114000012977335000}
-  - 61: {fileID: 61000013159244926}
   m_Layer: 0
   m_Name: tunnelDoor
   m_TagString: Door
@@ -311,20 +310,6 @@ BoxCollider2D:
   m_Offset: {x: 0.6, y: -0.43}
   serializedVersion: 2
   m_Size: {x: 1, y: 7.61}
---- !u!61 &61000013159244926
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012452328036}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0.5606699, y: -1.2098665}
-  serializedVersion: 2
-  m_Size: {x: 2.1213403, y: 9.203482}
 --- !u!95 &95000013082805342
 Animator:
   serializedVersion: 3
