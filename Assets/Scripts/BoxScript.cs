@@ -63,12 +63,17 @@ public class BoxScript : MonoBehaviour {
             groundedOn = null;
         }
 
-        if(other.gameObject.CompareTag("Box") || other.gameObject.CompareTag("Door")){
-			if(other.transform.position.y > transform.position.y){
+        if(other.gameObject.CompareTag("Box")){
+			if(other.transform.position.y < transform.position.y){
     			spriteRendererComponent.sortingOrder = orderOffset;
     		}
 		}
 
+		if(other.gameObject.CompareTag("Door")){
+			if(other.transform.position.x > transform.position.x){
+    			spriteRendererComponent.sortingOrder = orderOffset;
+    		}
+		}
 
     }
 }
