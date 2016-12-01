@@ -70,7 +70,7 @@ MonoBehaviour:
   activated: 0
   velocity: 60
   choiceIndex: 1
-  prefab: {fileID: 1000012179268912, guid: d87b607b6ff3d8743ad7ab7a10bc88a3, type: 2}
+  prefab: {fileID: 1000012043931434, guid: 245cf7ab00455c14a88fdbababeacc2b, type: 2}
 --- !u!212 &212000012702417872
 SpriteRenderer:
   m_ObjectHideFlags: 1
