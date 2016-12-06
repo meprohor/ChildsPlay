@@ -26,7 +26,7 @@ GameObject:
   - 253: {fileID: 253000013946068230}
   m_Layer: 0
   m_Name: Steam 1
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012043931434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.33, y: 3.7293417, z: 0}
   m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -55,9 +55,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 1
-  m_Offset: {x: -0.019119423, y: -0.028678417}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 7.71, y: 10.7}
+  m_Size: {x: 7, y: 9}
 --- !u!95 &95000012333846568
 Animator:
   serializedVersion: 3
@@ -130,7 +130,7 @@ BuoyancyEffector2D:
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_SurfaceLevel: 1
+  m_SurfaceLevel: 6
   m_Density: 1
   m_LinearDrag: 1
   m_AngularDrag: 0

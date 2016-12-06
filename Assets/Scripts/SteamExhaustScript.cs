@@ -47,7 +47,7 @@ public class SteamExhaustScript : MonoBehaviour {
 
     void CreatePlatform(){
     	Vector3 pos = transform.position;
-    	pos.y += GetComponent<BoxCollider2D>().bounds.size.y;
+    	pos.y += GetComponent<BoxCollider2D>().bounds.size.y+1;
     	platform = (GameObject)Instantiate(prefab, pos, transform.rotation);
     }
 }

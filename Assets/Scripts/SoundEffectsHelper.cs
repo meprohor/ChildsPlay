@@ -7,16 +7,22 @@ public class SoundEffectsHelper : MonoBehaviour {
 	public AudioClip[] fallFromJumpSound;
 	public AudioClip movingSound;
 	public AudioClip musicTheme;
+	public AudioClip doorOpen;
+	public AudioClip doorClose;
+
 
 	// Control the volume 
 	public float volumeJumpFall;
 	public float volumeTheme;
+	public float volumeDoor;
 
 	// Play sounds
 	private AudioSource characterJumpFall;
 	private AudioSource characterMove;
 	private AudioSource theme;
 	private AudioSource boxSound;
+	private AudioSource doorSound;
+
 
 	// This is for checking if player is moving
 	private GameObject player;
@@ -45,6 +51,9 @@ public class SoundEffectsHelper : MonoBehaviour {
 
 		// Initialize box sound source
 		boxSound = AddAudio(false, true, 0.5f);
+
+		// Initialize door sound source
+		doorSound = AddAudio(false, true, 0.5f);
 
 		// Find the player gameObject
 		player = GameObject.FindWithTag("Player");
@@ -97,4 +106,16 @@ public class SoundEffectsHelper : MonoBehaviour {
 			boxSound.PlayOneShot(fallFromJumpSound[Random.Range(0, fallFromJumpSound.Length)], volumeJumpFall);
 		}
 	}
+
+	// Play sound when door is opened
+	void DoorOpenSound(){
+		doorSound.PlayOneShot(doorOpen, volumeDoor);
+	}
+
+	// Play sound when door is closed
+	void DoorCloseSound(){
+		doorSound.PlayOneShot(doorClose, volumeDoor);
+	}
+
+
 }

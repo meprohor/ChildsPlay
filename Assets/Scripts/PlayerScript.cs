@@ -56,6 +56,8 @@ public class PlayerScript : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
     private int[] orderOffset;
 
+    private float walkAnimationSwitch = -1;
+
     // Make a falling sound when player hits the ground
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -148,6 +150,7 @@ public class PlayerScript : MonoBehaviour
             if(Time.time >= idleStamp){
                 animatorComponent.SetBool("Idle", true);
             }
+
             if(Input.anyKey){
                 idleStamp = Time.time + timeUntilIdle;
                 animatorComponent.SetBool("Idle", false);
@@ -156,8 +159,19 @@ public class PlayerScript : MonoBehaviour
             // Retrieve axis information
             float inputX = 0;
 
-            if(Input.GetButton("Vertical"))
+            if(Input.GetButton("Vertical")){
                 inputX = Input.GetAxis("Vertical");
+                if(walkAnimationSwitch == -1){
+                    walkAnimationSwitch = Time.time;
+                } else {
+                    walkAnimationSwitch = Time.time - walkAnimationSwitch;
+                    if(walkAnimationSwitch > 3.0f)
+                        animatorComponent.SetBool("Run", true);
+                }
+            } else {
+                walkAnimationSwitch = -1;
+                animatorComponent.SetBool("Run", false);
+            }
 
             // We only allow 3 button presses in one second
             if(Time.time >= timestampTurns && Input.GetButton("Turn") && unlockTurn){

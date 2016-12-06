@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PoliceDroneScript : MonoBehaviour {
-
 	// If player touched the drone, trigger game over
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.CompareTag("Player") && !other.isTrigger){
@@ -14,6 +13,8 @@ public class PoliceDroneScript : MonoBehaviour {
 	// If lever was pushed, deactivate the Drone
 	void Activate(){
 		GetComponent<Rigidbody2D>().isKinematic = false;
-		GetComponent<BoxCollider2D>().isTrigger = false; 
+		GetComponent<BoxCollider2D>().enabled = false; 
+		Animator anim = GetComponentInChildren<Animator>();
+		anim.SetTrigger("Dead");
 	}
 }

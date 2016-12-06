@@ -8,27 +8,43 @@ public class DoorScript : MonoBehaviour {
 	public bool open = false;
 	private SpriteRenderer[] spriteRenderers;
 
+	// GameObject which plays sound effects
+    private GameObject soundEffectsHelper;
+
 	// Initialize variables and set the starting door state
 	void Start(){
+		soundEffectsHelper = GameObject.Find("soundEffectsHelper");
+
 		animatorComponent = GetComponentInChildren<Animator>();
 
-		if(open)
+		spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+		if(open){
 			Open();
+			ChangeSortingOrder();
+		}
 		else
 			Close();
-
-		spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 	}
 
 	// On lever activation change door state
 	void Activate(){
 		open = !open;
-		if(open)
+		if(open){
 			Open();
-		else
+			soundEffectsHelper.SendMessage("DoorOpenSound");
+		}
+		else{
 			Close();
-		// Change sorting order after a small delay for the animation to catch up
+			Invoke("CloseSound", 1);
+		}
+
+	    // Change sorting order after a small delay for the animation to catch up
 		Invoke("ChangeSortingOrder", 1);
+	}
+
+	void CloseSound(){
+		soundEffectsHelper.SendMessage("DoorCloseSound");
 	}
 
 	// Open the door 
