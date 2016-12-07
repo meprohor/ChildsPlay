@@ -3062,11 +3062,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013734157638, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013734157638, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.05
+      value: -2.15
       objectReference: {fileID: 0}
     - target: {fileID: 4000013734157638, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3092,17 +3092,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011116871600, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a,
-        type: 2}
-      propertyPath: choiceIndex
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000012210255940, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b651911184c3a8948a6d65fb4b4c0123,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a, type: 2}
   m_IsPrefabParent: 0
@@ -3277,7 +3266,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013734157638, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4000013734157638, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3312,7 +3301,12 @@ Prefab:
       propertyPath: choiceIndex
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 212000012210255940, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a,
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 86cef30c297a7fb4ba41f44db3681c68,
+        type: 3}
+    - target: {fileID: 212000013763648654, guid: 1c1c8c32b1e7f2f4baa7cf148f9d602a,
         type: 2}
       propertyPath: m_Sprite
       value: 
