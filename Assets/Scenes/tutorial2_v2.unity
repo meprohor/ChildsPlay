@@ -2223,21 +2223,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 114000014011833762, guid: 128add59c71a74d4b828db770eb13840,
-        type: 2}
-      propertyPath: doorOpen
-      value: 
-      objectReference: {fileID: 8300000, guid: 0864a3f89ceef1440a1ce00270f8276c, type: 3}
-    - target: {fileID: 114000014011833762, guid: 128add59c71a74d4b828db770eb13840,
-        type: 2}
-      propertyPath: doorClose
-      value: 
-      objectReference: {fileID: 8300000, guid: 5e92ce552a1ee92459c68dc44243a840, type: 3}
-    - target: {fileID: 114000014011833762, guid: 128add59c71a74d4b828db770eb13840,
-        type: 2}
-      propertyPath: volumeDoor
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 128add59c71a74d4b828db770eb13840, type: 2}
   m_IsPrefabParent: 0

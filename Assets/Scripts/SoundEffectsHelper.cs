@@ -15,6 +15,7 @@ public class SoundEffectsHelper : MonoBehaviour {
 	public float volumeJumpFall;
 	public float volumeTheme;
 	public float volumeDoor;
+	public float volumeMove;
 
 	// Play sounds
 	private AudioSource characterJumpFall;
@@ -42,7 +43,7 @@ public class SoundEffectsHelper : MonoBehaviour {
 		characterJumpFall = AddAudio(false, true, 0.5f);
 		
 		// Initialize Movement sound source
-		characterMove = AddAudio(true, true, 0.5f);
+		characterMove = AddAudio(true, true, volumeMove);
 		characterMove.clip = movingSound;
 
 		// Initialize music theme source
@@ -93,6 +94,7 @@ public class SoundEffectsHelper : MonoBehaviour {
 		// Check if player is moving and play movement sound
 		if(player.GetComponent<Rigidbody2D>().velocity.x > 0 || player.GetComponent<Rigidbody2D>().velocity.x < 0  &&   player.GetComponent<PlayerScript>().isGrounded && !GameOverScript.IsGameOver){
 			if(!characterMove.isPlaying){
+				characterMove.volume = volumeMove;
 				characterMove.Play();
 			}
 		}else{
