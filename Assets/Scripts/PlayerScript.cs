@@ -137,9 +137,11 @@ public class PlayerScript : MonoBehaviour
     // Set variable isGameOver to block all input and trigger death animation
     void GameOver()
     {
+        if(!isGameOver)
+        	animatorComponent.SetTrigger("GameOver");
+        	
         isGameOver = true;
         animatorComponent.SetBool("Jump", false);
-        animatorComponent.SetTrigger("GameOver");
     }
 
     // Handle user input

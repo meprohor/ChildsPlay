@@ -65,7 +65,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 61c9b623763b9094a8af34357ae13b8b, type: 3}
   - {fileID: 8300000, guid: af253cb2b34d7024eae0726264219283, type: 3}
   movingSound: {fileID: 8300000, guid: ff7b5551fc045f8429898ad3d1eeac7f, type: 3}
-  musicTheme: {fileID: 8300000, guid: 30e2861c857532042855be9bb9e0e2de, type: 3}
+  musicTheme: {fileID: 8300000, guid: ad552fe45027a554f92be53f96319dfb, type: 3}
   doorOpen: {fileID: 8300000, guid: 0864a3f89ceef1440a1ce00270f8276c, type: 3}
   doorClose: {fileID: 8300000, guid: 5e92ce552a1ee92459c68dc44243a840, type: 3}
   volumeJumpFall: 0.1
