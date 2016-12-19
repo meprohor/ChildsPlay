@@ -7,7 +7,7 @@ public class ExitAreaScript : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.CompareTag("Player") && !other.isTrigger){
- 			Invoke("LoadNextScene", 0.5f);
+ 			Invoke("LoadNextScene", 0.4f);
  		}
 	}
 
