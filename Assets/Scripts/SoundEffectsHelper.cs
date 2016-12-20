@@ -28,6 +28,22 @@ public class SoundEffectsHelper : MonoBehaviour {
 	// This is for checking if player is moving
 	private GameObject player;
 
+	/* Stay alive on every scene */
+ 	private static SoundEffectsHelper instance = null;
+ 	public static SoundEffectsHelper Instance {
+     	get { return instance; }
+ 	}
+
+ 	void Awake() {
+     	if (instance != null && instance != this) {
+         	Destroy(this.gameObject);
+        	return;
+     	} else {
+        	instance = this;
+     	}
+     	DontDestroyOnLoad(this.gameObject);
+ 	}
+
 	// Returns a new audiosource
 	AudioSource AddAudio(bool loop, bool playAwake, float vol) { 
      	AudioSource newAudio = gameObject.AddComponent<AudioSource>();
@@ -92,13 +108,18 @@ public class SoundEffectsHelper : MonoBehaviour {
 	// Play sound when player moves horizontally
 	void MovingSound(){
 		// Check if player is moving and play movement sound
-		if(player.GetComponent<Rigidbody2D>().velocity.x > 0 || player.GetComponent<Rigidbody2D>().velocity.x < 0  &&   player.GetComponent<PlayerScript>().isGrounded && !GameOverScript.IsGameOver){
-			if(!characterMove.isPlaying){
-				characterMove.volume = volumeMove;
-				characterMove.Play();
+		if(player != null){
+			if(player.GetComponent<Rigidbody2D>().velocity.x > 0 || player.GetComponent<Rigidbody2D>().velocity.x < 0  &&   player.GetComponent<PlayerScript>().isGrounded && !GameOverScript.IsGameOver){
+				if(!characterMove.isPlaying){
+					characterMove.volume = volumeMove;
+					characterMove.Play();
+				}
+			}	
+			else{
+				characterMove.Pause();
 			}
-		}else{
-			characterMove.Pause();
+		} else {
+			player = GameObject.FindWithTag("Player");
 		}
 	}
 
