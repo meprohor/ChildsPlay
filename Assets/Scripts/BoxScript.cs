@@ -18,7 +18,11 @@ public class BoxScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rigidbodyComponent = GetComponent<Rigidbody2D>();
-		rigidbodyComponent.isKinematic = true;
+		//rigidbodyComponent.isKinematic = true;
+		/* С false значение body type в rigidbody устанавливается на dynamic и ящики падают сразу с инициализацией уровня.
+			Почему небыло сделано так сразу, или почему не установаить dynamic в свойствах, зачем вообще Kinematic?
+			Возможно, это одна из тех загадок, которые останутся без ответа.*/
+		rigidbodyComponent.isKinematic = false;
 		soundEffectsHelper = GameObject.Find("soundEffectsHelper");
 
 		spriteRendererComponent = GetComponent<SpriteRenderer>();
@@ -48,9 +52,14 @@ public class BoxScript : MonoBehaviour {
 		}
 
 		if(other.gameObject.CompareTag("Box")){
-			if(other.transform.position.y < transform.position.y){
+			/*if(other.transform.position.y < transform.position.y){
     			spriteRendererComponent.sortingOrder += 1;
-    		} 
+    		}*/
+			//spriteRendererComponent.sortingOrder = (int)(transform.position.y);
+			spriteRendererComponent.sortingOrder = (int)(transform.position.y*100 - transform.position.x*10);
+			if (other.gameObject.name == "box (3)") {
+				Debug.Log("Layer: " + transform.position.y + " " + transform.position.x);
+			}
 		}
 
 	}
@@ -65,7 +74,7 @@ public class BoxScript : MonoBehaviour {
 
         if(other.gameObject.CompareTag("Box")){
 			if(other.transform.position.y < transform.position.y){
-    			spriteRendererComponent.sortingOrder = orderOffset;
+    			//spriteRendererComponent.sortingOrder = orderOffset;
     		}
 		}
 
