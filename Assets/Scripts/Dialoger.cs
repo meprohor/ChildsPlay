@@ -4,31 +4,42 @@ using UnityEngine;
 
 public class Dialoger : MonoBehaviour
 {
+	private GameObject playerGO;
+	
     public Transform[] SpawnLocation;
     public GameObject[] ObjPrefab;
-    public GameObject[] ObjClone;
+	
+	private List<GameObject> ObjClone;
+	
     // Use this for initialization
 
-    void Start()
+    void Activate()
     {
         SpawnSomething();
     }
 
     void SpawnSomething()
     {
-        ObjClone[0] = Instantiate(ObjPrefab[0], SpawnLocation[0].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
-        //ObjClone[0].GetComponent<TextMesh>().text = "new text";
-        ObjClone[1] = Instantiate(ObjPrefab[1], SpawnLocation[1].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+		ObjClone = new List<GameObject>();
+	
+        ObjClone.Add(Instantiate(ObjPrefab[0], SpawnLocation[0].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject);
+        ObjClone.Add(Instantiate(ObjPrefab[1], SpawnLocation[1].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject);
 
         //ObjClone[1].AddComponent<FY>(); // Че, как это вообще использовать, че за хрень?
-        ObjClone[2] = Instantiate(ObjPrefab[2], SpawnLocation[2].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+        ObjClone.Add(Instantiate(ObjPrefab[2], SpawnLocation[2].transform.position, Quaternion.Euler(0, 0, 0)) as GameObject);
 
+		ObjClone[0].GetComponentInChildren<TextMesh>().text = "new text";
+		
+		playerGO = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     // Update is called once per frame
     void Update()
     {
-
+		if(null == ObjClone)
+			return;
+		
+		ObjClone[0].transform.position = playerGO.transform.position;
     }
 
     void SpawnCubes()
