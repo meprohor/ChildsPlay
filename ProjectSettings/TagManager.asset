@@ -50,6 +50,9 @@ TagManager:
   - name: Middleground
     uniqueID: 2991986387
     locked: 0
+  - name: Boxlayer
+    uniqueID: 2217636711
+    locked: 0
   - name: Foreground
     uniqueID: 1242292233
     locked: 0
