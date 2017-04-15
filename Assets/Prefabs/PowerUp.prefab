@@ -16,11 +16,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013734157638}
-  - 114: {fileID: 114000011116871600}
-  - 61: {fileID: 61000013161972850}
+  - component: {fileID: 4000013734157638}
+  - component: {fileID: 114000011116871600}
+  - component: {fileID: 61000013161972850}
   m_Layer: 0
   m_Name: PowerUp
   m_TagString: Untagged
@@ -33,11 +33,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000014190193532}
-  - 212: {fileID: 212000013763648654}
-  - 95: {fileID: 95000013726015898}
+  - component: {fileID: 4000014190193532}
+  - component: {fileID: 212000013763648654}
+  - component: {fileID: 95000013726015898}
   m_Layer: 0
   m_Name: Animated
   m_TagString: Untagged
@@ -54,11 +54,11 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1, y: -2.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.9741244}
   m_Children:
   - {fileID: 4000014190193532}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.9741244}
 --- !u!4 &4000014190193532
 Transform:
   m_ObjectHideFlags: 1
@@ -68,10 +68,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.3829513}
   m_Children: []
   m_Father: {fileID: 4000013734157638}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.3829513}
 --- !u!61 &61000013161972850
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -129,7 +129,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -137,7 +139,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 1
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

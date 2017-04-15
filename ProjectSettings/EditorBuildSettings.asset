@@ -21,3 +21,5 @@ EditorBuildSettings:
     path: Assets/Scenes/tutotial3.unity
   - enabled: 1
     path: Assets/Scenes/level1.unity
+  - enabled: 0
+    path: Assets/Scenes/TEST_Box_1.unity
