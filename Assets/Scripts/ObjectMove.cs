@@ -17,7 +17,7 @@ public class ObjectMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, points[currentObject].transform.position, step);
+        transform.position = Vector2.MoveTowards(transform.position, points[currentObject].transform.position, step);
 		if (transform.position == points[currentObject].transform.position) {
 			currentObject++;
 			if (currentObject == points.Length) {

@@ -16,15 +16,15 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013211660180}
-  - 20: {fileID: 20000013374701150}
-  - 92: {fileID: 92000014039338610}
-  - 124: {fileID: 124000010214315676}
-  - 81: {fileID: 81000013314364804}
-  - 114: {fileID: 114000012656589096}
-  - 50: {fileID: 50000014162659226}
+  - component: {fileID: 4000013211660180}
+  - component: {fileID: 20000013374701150}
+  - component: {fileID: 92000014039338610}
+  - component: {fileID: 124000010214315676}
+  - component: {fileID: 81000013314364804}
+  - component: {fileID: 114000012656589096}
+  - component: {fileID: 50000014162659226}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -41,10 +41,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20000013374701150
 Camera:
   m_ObjectHideFlags: 1
@@ -81,17 +81,20 @@ Camera:
   m_StereoMirrorMode: 0
 --- !u!50 &50000014162659226
 Rigidbody2D:
-  serializedVersion: 2
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012465659006}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_IsKinematic: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -123,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followedObject: {fileID: 0}
   offset: {x: 2, y: 0.15}
-  cameraSpeed: {x: 50, y: 50}
+  cameraSpeed: {x: 1.2, y: 50}
 --- !u!124 &124000010214315676
 Behaviour:
   m_ObjectHideFlags: 1

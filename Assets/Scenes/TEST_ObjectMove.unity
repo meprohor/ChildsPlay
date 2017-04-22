@@ -1336,10 +1336,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1000012465659006, guid: 53575fe94f5fb9547b850b5e68b38857, type: 2}
-      propertyPath: m_Name
-      value: Main Camera
-      objectReference: {fileID: 0}
     - target: {fileID: 114000012656589096, guid: 53575fe94f5fb9547b850b5e68b38857,
         type: 2}
       propertyPath: followedObject
