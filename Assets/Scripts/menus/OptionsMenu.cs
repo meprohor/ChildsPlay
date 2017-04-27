@@ -246,7 +246,6 @@ public static class OptionsMenu
 					if(aspectRatios.Contains(ratio))
 						_fullScreenResolutions.Add(resolution);
 				}
-				//_fullScreenResolutions = Screen.resolutions.ToList();
 			}
 			
 			return _fullScreenResolutions;
@@ -437,7 +436,7 @@ public static class OptionsMenu
 	public static void OnMaxResolution()
 	{
 		fullScreen = true;
-		curRes = resolutionsList[resolutionsList.Count - 1];
+		curRes = fullScreenResolutions[fullScreenResolutions.Count() - 1];
 		OnApplied();
 	}
 	

@@ -13,7 +13,18 @@ public static class Game
 	}
 	
 	public static string levelName;
-	public static List<string> unlockedLevels;
+	public static List<string> _unlockedLevels;
+	public static List<string> unlockedLevels
+	{
+		set { _unlockedLevels = value; }
+		get
+		{
+			if(null == _unlockedLevels)
+				_unlockedLevels = new List<string>();
+			
+			return _unlockedLevels;
+		}
+	}
 	
 	public static void Save()
 	{
