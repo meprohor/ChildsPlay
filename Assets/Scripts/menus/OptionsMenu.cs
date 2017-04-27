@@ -181,8 +181,6 @@ public static class OptionsMenu
 		
 		Configs data = new Configs();
 		data.fullScreen = fullScreen;
-		data.resolutionWidth = curRes.width;
-		data.resolutionHeight = curRes.height;
 		data.mute = mute;
 		data.volume = volume;
 		
@@ -209,15 +207,10 @@ public static class OptionsMenu
 		tempFS.Close();
 		
 		fullScreen = data.fullScreen;
-		
-		Resolution tempR = new Resolution();
-		tempR.width = data.resolutionWidth;
-		tempR.height = data.resolutionHeight;
-		
-		curRes = tempR;
-		
 		mute = data.mute;
 		volume = data.volume;
+		
+		curRes = Screen.currentResolution;
 	}
 	
 	private static Text _resolutionText;
@@ -542,8 +535,6 @@ public static class OptionsMenu
 class Configs
 {
 	public bool fullScreen;
-	public int resolutionWidth;
-	public int resolutionHeight;
 	public float mute;
 	public float volume;
 }
