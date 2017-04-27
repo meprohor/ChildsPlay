@@ -1,15 +1,21 @@
-﻿/* Button */
+﻿/* Screen */
+using UnityEngine;
+/* Button */
 using UnityEngine.UI;
 /* EventSystem */
 using UnityEngine.EventSystems;
 /* SceneManager */
 using UnityEngine.SceneManagement;
+/* Serializable */
+using System;
 /* ToList */
 using System.Linq;
 /* List */
 using System.Collections.Generic;
-/* Screen */
-using UnityEngine;
+/* File */
+using System.IO;
+/* BinaryFormatter */
+using System.Runtime.Serialization.Formatters.Binary;
 /* AssetDatabase */
 #if UNITY_EDITOR
 using UnityEditor;
@@ -161,6 +167,57 @@ public static class OptionsMenu
 			default:
 				break;
 		}
+	}
+	
+	public static string dataPath
+	{
+		get { return Application.persistentDataPath + "/config.dat"; }
+	}
+	
+	private static void Save()
+	{
+		BinaryFormatter tempBF = new BinaryFormatter();
+		FileStream tempFS = File.Create(dataPath);
+		
+		Configs data = new Configs();
+		data.fullScreen = fullScreen;
+		data.resolutionWidth = curRes.width;
+		data.resolutionHeight = curRes.height;
+		data.mute = mute;
+		data.volume = volume;
+		
+		tempBF.Serialize(tempFS, data);
+		tempFS.Close();
+	}
+	
+	public static void Load()
+	{
+		if(!File.Exists(dataPath))
+		{
+			mute = 1.0f;
+			volume = 1.0f;
+			AudioListener.volume = 1.0f;
+			
+			Save();
+			return;
+		}
+		
+		BinaryFormatter tempBF = new BinaryFormatter();
+		FileStream tempFS = File.Open(dataPath, FileMode.Open);
+		
+		Configs data = (Configs)tempBF.Deserialize(tempFS);
+		tempFS.Close();
+		
+		fullScreen = data.fullScreen;
+		
+		Resolution tempR = new Resolution();
+		tempR.width = data.resolutionWidth;
+		tempR.height = data.resolutionHeight;
+		
+		curRes = tempR;
+		
+		mute = data.mute;
+		volume = data.volume;
 	}
 	
 	private static Text _resolutionText;
@@ -350,7 +407,7 @@ public static class OptionsMenu
 		get { return (true == _mute)?(1.0f):(.0f); }
 		set
 		{
-			_mute = (.0f == value)?(false):(true);
+			_mute = (Mathf.Approximately(.0f, value))?(false):(true);
 			
 			ManageVolumeText();
 		}
@@ -399,7 +456,7 @@ public static class OptionsMenu
 		
 		tempS += (volume * 100.0f).ToString() + "%";
 		
-		if(.0f == mute)
+		if(Mathf.Approximately(.0f, mute))
 			tempS += '\n' + "muted";
 		
 		volumeText = tempS;
@@ -416,11 +473,13 @@ public static class OptionsMenu
 		/* Reload scene to re-initialize buttons */
 		Scene scene = SceneManager.GetActiveScene();
 		SceneManager.LoadScene(scene.name);
+		
+		Save();
 	}
 	
 	public static void OnDeclined()
 	{
-		/* Load previous version or what */
+		Load();
 	}
 	
 	public static void OnDefault()
@@ -467,7 +526,7 @@ public static class OptionsMenu
 	
 	public static void OnToggleMute()
 	{
-		if(.0f == mute)
+		if(Mathf.Approximately(.0f, mute))
 			mute = 1.0f;
 		else
 			mute = .0f;
@@ -477,4 +536,14 @@ public static class OptionsMenu
 	{
 		SceneManager.LoadScene("Main_menu", LoadSceneMode.Single);
 	}
+}
+
+[Serializable]
+class Configs
+{
+	public bool fullScreen;
+	public int resolutionWidth;
+	public int resolutionHeight;
+	public float mute;
+	public float volume;
 }

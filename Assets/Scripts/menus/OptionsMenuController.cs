@@ -120,5 +120,7 @@ public class OptionsMenuController : MonoBehaviour
 		
 		OptionsMenu.ManageResolutionText();
 		OptionsMenu.ManageVolumeText();
+		
+		OptionsMenu.Load();
 	}
 }

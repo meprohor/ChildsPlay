@@ -9,7 +9,7 @@ public static class Game
 {
 	public static string dataPath
 	{
-		get { return Application.persistentDataPath + "sav.dat"; }
+		get { return Application.persistentDataPath + "/sav.dat"; }
 	}
 	
 	public static string levelName;
