@@ -36,10 +36,10 @@ public class Dialoger : MonoBehaviour
         // Находим ОБЪЕКТ игрока чтобы к нему можно было прицепить текст
         playerGO = GameObject.FindGameObjectsWithTag("Player")[0];
         // Переносы текста
-        /*foreach (string item in Message)
+        for (int i = 0; i < Message.Count;i++ )
         {
-            if (item.Length > 4) item.Insert(4, "\n");
-        }*/
+            if (Message[i].Length > 14) Message[i]=Message[i].Insert(14, "\n");
+        }
 	}
 
     void Activate()
@@ -78,7 +78,7 @@ public class Dialoger : MonoBehaviour
                 // ДЕинкрементируем время то самоуничтожения
                 TimeToDestroy[i] -= 1;
                 // Следует за игроком только если это необходимо
-                if (IsPlayerParent[i]) ObjClone[i].transform.position = playerGO.transform.position;
+                if (IsPlayerParent[i]) ObjClone[i].transform.position = playerGO.transform.position + new Vector3(-6, 7 + Mathf.Sin(TimeToDestroy[i] / (4*Mathf.PI))/2, 0);
             }
             else
                 Destroy(ObjClone[i]);
