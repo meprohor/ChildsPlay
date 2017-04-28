@@ -5,6 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/menus/Main_Menu.unity
+  - enabled: 1
+    path: Assets/Scenes/menus/Options_Menu.unity
   - enabled: 0
     path: Assets/Scenes/sewers_test.unity
   - enabled: 0
@@ -21,3 +25,5 @@ EditorBuildSettings:
     path: Assets/Scenes/tutotial3.unity
   - enabled: 1
     path: Assets/Scenes/level1.unity
+  - enabled: 0
+    path: Assets/Scenes/TEST_Box_1.unity
