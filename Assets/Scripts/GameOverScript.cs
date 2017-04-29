@@ -19,6 +19,10 @@ public class GameOverScript : MonoBehaviour {
 		 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
+	public void MainMenu(){
+		 SceneManager.LoadScene("Main_Menu", LoadSceneMode.Single);
+	}
+
 	// Controls the pausing of the scene
 	public void GameOver(){
 		IsGameOver = true;
