@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followedObject: {fileID: 0}
   offset: {x: 2, y: 0.15}
-  cameraSpeed: {x: 50, y: 70}
+  cameraSpeed: {x: 1.2, y: 70}
 --- !u!114 &114539495396905142
 MonoBehaviour:
   m_ObjectHideFlags: 1

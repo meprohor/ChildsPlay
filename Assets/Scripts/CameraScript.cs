@@ -10,13 +10,30 @@ public class CameraScript : MonoBehaviour {
 	private Rigidbody2D camRigidBody;
 
 	public Vector2 offset = new Vector2(2.0f, 0.15f);
-	public Vector2 cameraSpeed = new Vector2(50, 50);
+	public Vector2 cameraSpeed = new Vector2(1.0f, 50);
+	
+	private PlayerScript _playerScript = null;
+	private PlayerScript playerScript
+	{
+		get
+		{
+			if(null == _playerScript)
+			{
+				GameObject tempGO = GameObject.Find("player");
+				_playerScript = tempGO.GetComponent<PlayerScript>();
+			}
+			
+			return _playerScript;
+		}
+	}
 
 	private Vector3 desiredVelocity;
 	// Use this for initialization
 	void Start () {
 		rigidBody = followedObject.GetComponent<Rigidbody2D>();
 		camRigidBody = GetComponent<Rigidbody2D>();
+		
+		cameraSpeed.x *= playerScript.speed.x;
 	}
 	
 	// Update is called once per frame
@@ -26,17 +43,20 @@ public class CameraScript : MonoBehaviour {
 		objectPosition = rigidBody.position;
 		
 		// Check if the object moved beyond the specified offset
-		if(Mathf.Abs(cameraPosition.x - objectPosition.x) > offset.x){
+		/*if(Mathf.Abs(cameraPosition.x - objectPosition.x) > offset.x){
 			// Set camera velocity vector so that it would followed the object horizontally
 			Vector3 directionalVector = (objectPosition - cameraPosition).normalized * cameraSpeed.x;
 			desiredVelocity.x = directionalVector.x;
 		}else{
 			// Otherwise set the velociy to zero
 			desiredVelocity.x = 0;
-		}
+		}*/
+		
+		desiredVelocity.x = Mathf.Sin(Mathf.Clamp((objectPosition.x - cameraPosition.x) / offset.x, -1.0f, 1.0f) * (Mathf.PI / 4)) * cameraSpeed.x;
 
 		// Move the camera vertically only if an object jumped on a higher platform or exceeded the specified vertical speed limit
-		if((followedObject.GetComponent<PlayerScript>().isGrounded && Mathf.Abs(cameraPosition.y - objectPosition.y) > offset.y) || Mathf.Abs(rigidBody.velocity.y) > 35){
+		if((followedObject.GetComponent<PlayerScript>().isGrounded && Mathf.Abs(cameraPosition.y - objectPosition.y) > offset.y) 
+			|| Mathf.Abs(rigidBody.velocity.y) > 35){
 			// Set camera velocity vector so that it would followed the object vertically
 			Vector3 directionalVector = (objectPosition - cameraPosition).normalized * cameraSpeed.y;
 			desiredVelocity.y = directionalVector.y;
@@ -49,5 +69,5 @@ public class CameraScript : MonoBehaviour {
 	void FixedUpdate () {
 		// Change camera's rigid body velocity
      	camRigidBody.velocity = desiredVelocity;
- }
+	}
 }

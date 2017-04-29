@@ -60,7 +60,6 @@ public class BoxScript : MonoBehaviour {
 		if(other.gameObject.CompareTag("Box")){
 			spriteRendererComponent.sortingOrder = (int)(transform.position.y*100 - transform.position.x*10);
 		}
-
 	}
 
     // Check if box left the ground
@@ -88,6 +87,5 @@ public class BoxScript : MonoBehaviour {
     			spriteRendererComponent.sortingOrder = orderOffset;
     		}
 		}
-
     }
 }
