@@ -1,6 +1,7 @@
 # ChildsPlay
-
 This is very interesting game.
+
+![PiToShockLogo](/PiToShock.png)
 
 ## Willbot's Journey
 (рабочее название ChildsPlay)
